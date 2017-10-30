@@ -21,18 +21,18 @@ $(function() {
 
         //Test if allFeeds' URLs are defined and not empty
         it('allFeeds URL are defined and not empty', function(){
-            for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].url).toBeDefined();
-                expect(allFeeds[i].url).not.toBe(0);
-            }
+            allFeeds.forEach(function(feed){
+                expect(feed.url).toBeDefined();
+                expect(feed.url).not.toEqual("");
+            });
          });
 
         ////Test if allFeeds' names are defined and not empty
         it('allFeeds has name and it not empty', function(){
-            for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].name).toBeDefined();
-                expect(allFeeds[i].name).not.toBe(0);
-            }
+            allFeeds.forEach(function(feed){
+                expect(feed.name).toBeDefined();
+                expect(feed.name).not.toEqual("");
+            });
          });
     });
 
@@ -48,7 +48,7 @@ $(function() {
             expect($('body').hasClass('menu-hidden')).toBe(false);
 
             $('.menu-icon-link').click();
-            expect($('body').hasClass('menu-hidden')).not.toBe(false);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
          });
     });
 
@@ -63,7 +63,7 @@ $(function() {
         });
         
         it('has an entry element within feed container', function(done){
-            expect($('.entry').length).not.toBe(0);
+            expect($('.feed .entry').length).not.toBe(0);
             done();
          });
     });
